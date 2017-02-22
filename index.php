@@ -20,7 +20,7 @@
                 </div>
                 <div class="col2">
                     <label for="word"></label>
-                    <input type="text" name="word" id="word" value="<?=$form->prefill('word'); ?>" autofocus="autofocus">
+                    <input type="text" name="word" id="word" value="<?=$form->prefill('word'); ?>" autofocus="autofocus" maxlength="20">
                 </div>
                 </div>
 
@@ -47,6 +47,18 @@
                 </div>
 
                 <input type="submit" value="Calculate">
+
+                <?php if($errors): ?>
+                    <div class="result error">
+                        <?php echo str_replace('word', '"Your word"', $errors[0]); ?>
+                    </div>
+                <?php elseif($score): ?>
+                    <div class="result ok">
+                        <?php echo "Your word is worth ".$score." points"; ?>
+                    </div>
+                <?php endif; ?>
+
+
             </form>
         </div>
     </body>
